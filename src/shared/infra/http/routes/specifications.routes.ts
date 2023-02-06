@@ -1,12 +1,18 @@
-import { Router } from "express";
-import { CreateSpecificationController } from "@modules/cars/useCases/createSpecification/CreateSpecificationController";
-import { ListSpecificationsController } from "@modules/cars/useCases/listSpecification/ListSpecificationsController";
+import { Router } from 'express';
 
-const speficicationsRoutes = Router();
+import { CreateSpecificationController } from '@modules/cars/useCases/createSpecification/CreateSpecificationController';
+import { ensureAdmin } from '../middleware/ensureAdmin';
+import { ensureAuthenticated } from '../middleware/ensureAuthenticated';
+
+const specificationsRoutes = Router();
+
 const createSpecificationController = new CreateSpecificationController();
-const listSpecificationsController = new ListSpecificationsController();
 
-speficicationsRoutes.post("/",createSpecificationController.handle);
-speficicationsRoutes.get("/",listSpecificationsController.handle)
+specificationsRoutes.post(
+  '/',
+  ensureAuthenticated,
+  ensureAdmin,
+  createSpecificationController.handle,
+);
 
-export { speficicationsRoutes };
+export { specificationsRoutes };
