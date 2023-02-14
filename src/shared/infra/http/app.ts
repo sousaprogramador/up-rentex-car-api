@@ -9,10 +9,10 @@ import 'express-async-errors';
 import swaggerUi from 'swagger-ui-express';
 
 import upload from '@config/upload';
-//import * as Sentry from '@sentry/node';
-//import * as Tracing from '@sentry/tracing';
+// import * as Sentry from '@sentry/node';
+// import * as Tracing from '@sentry/tracing';
 import { AppError } from '@shared/errors/AppError';
-//import rateLimiter from '@shared/infra/http/middlewares/rateLimiter';
+// import rateLimiter from '@shared/infra/http/middlewares/rateLimiter';
 import createConnection from '@shared/infra/typeorm';
 
 import swaggerFile from '../../../swagger.json';
@@ -21,7 +21,7 @@ import { router } from './routes';
 createConnection();
 const app = express();
 
-/*app.use(rateLimiter);
+/* app.use(rateLimiter);
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -33,7 +33,7 @@ Sentry.init({
 });
 
 app.use(Sentry.Handlers.requestHandler());
-app.use(Sentry.Handlers.tracingHandler());*/
+app.use(Sentry.Handlers.tracingHandler()); */
 
 app.use(express.json());
 
@@ -45,7 +45,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(cors());
 app.use(router);
 
-//app.use(Sentry.Handlers.errorHandler());
+// app.use(Sentry.Handlers.errorHandler());
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
