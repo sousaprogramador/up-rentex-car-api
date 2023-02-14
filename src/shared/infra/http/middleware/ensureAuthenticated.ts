@@ -1,37 +1,43 @@
-import { NextFunction, Request, Response } from "express";
-import { verify } from "jsonwebtoken";
-import { UsersRepository } from "@modules/accounts/infra/typeorm/repositories/UsersRepository";
+import { NextFunction, Request, Response } from 'express';
+import { verify } from 'jsonwebtoken';
+
+import auth from '@config/auth';
+import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/UsersRepository';
+import { AppError } from '@shared/errors/AppError';
 
 interface IPayload {
-  sub:string;
+  sub: string;
 }
 
-export async function ensureAuthenticated(request:Request, response:Response, next:NextFunction) {
-
+export async function ensureAuthenticated(
+  request: Request,
+  response: Response,
+  next: NextFunction,
+): Promise<void> {
   const authHeader = request.headers.authorization;
+  const usersRepository = new UsersRepository();
 
-  if(!authHeader) {
-    throw new Error("Token missing");
+  if (!authHeader) {
+    throw new AppError('Token missing', 401);
   }
 
-  const [,token] = authHeader.split(" ");
+  const [, token] = authHeader.split(' ');
 
   try {
-    const { sub : user_id } = verify(token,"9fc58423aa0341dd75c031e1b2fabe0a") as IPayload;
+    const { sub: user_id } = verify(token, auth.secret_token) as IPayload;
 
-    const usersRepository = new UsersRepository();
-    const user = usersRepository.findById(user_id);
+    const user = await usersRepository.findById(user_id);
 
-    if(!user){
-      throw new Error("User does not exists!");
+    if (!user) {
+      throw new AppError('User does not exists!', 401);
     }
 
     request.user = {
-      id : user_id
-    }
+      id: user.id,
+    };
 
-    next();
+    return next();
   } catch (error) {
-    throw new Error("Invalid token");
+    throw new AppError('Invalid token!', 401);
   }
 }

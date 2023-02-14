@@ -58,7 +58,7 @@ describe('Authenticate user', () => {
     expect(async () => {
       const user: ICreateUserDTO = {
         driver_license: '12345',
-        email: 'user@user.com',
+        email: 'user@usererror.com',
         password: '1234',
         first_name: 'User test error',
         last_name: 'Last name'
