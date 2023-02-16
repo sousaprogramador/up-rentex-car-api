@@ -6,8 +6,7 @@ import { User } from '../infra/typeorm/entities/User';
 class UserMap {
   static toDTO({
     email,
-    first_name,
-    last_name,
+    name,
     id,
     avatar,
     driver_license,
@@ -15,8 +14,7 @@ class UserMap {
   }: User): IUserResponseDTO {
     const user = classToClass({
       email,
-      first_name,
-      last_name,
+      name,
       id,
       avatar,
       driver_license,

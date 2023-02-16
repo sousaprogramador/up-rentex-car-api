@@ -31,8 +31,7 @@ describe('Authenticate user', () => {
       driver_license: '00123',
       email: 'user@test.com',
       password: '1234',
-      first_name: 'User test',
-      last_name: 'Last name'
+      name: 'User test',
     };
 
     await createUserUseCase.execute(user);
@@ -60,8 +59,7 @@ describe('Authenticate user', () => {
         driver_license: '12345',
         email: 'user@usererror.com',
         password: '1234',
-        first_name: 'User test error',
-        last_name: 'Last name'
+        name: 'User test error',
       };
 
       await createUserUseCase.execute(user);
