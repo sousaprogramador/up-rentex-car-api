@@ -1,18 +1,19 @@
-import { inject } from "tsyringe";
-import { IUsersRepository } from "../../repositories/IUsersRepository";
-import { deleteFile } from "../../../../utils/file";
+import { inject } from 'tsyringe';
+
+import { deleteFile } from '../../../../utils/file';
+import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
-  user_id:string;
-  avatar_file:string;
+  user_id: string;
+  avatar_file: string;
 }
 class UpdateUserAvatarUseCase {
   constructor(
-    @inject("UsersRepository")
-    private usersRepository: IUsersRepository
-  ){}
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) {}
 
-  async execute({user_id,avatar_file}:IRequest){
+  async execute({ user_id, avatar_file }: IRequest) {
     const user = await this.usersRepository.findById(user_id);
 
     if (user.avatar) {
@@ -22,8 +23,7 @@ class UpdateUserAvatarUseCase {
     user.avatar = avatar_file;
 
     await this.usersRepository.create(user);
-
   }
 }
 
-export { UpdateUserAvatarUseCase }
+export { UpdateUserAvatarUseCase };

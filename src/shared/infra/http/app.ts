@@ -1,5 +1,6 @@
-import 'reflect-metadata';
+/* eslint-disable import/no-extraneous-dependencies */
 import 'dotenv/config';
+import 'reflect-metadata';
 
 import '@shared/container';
 
