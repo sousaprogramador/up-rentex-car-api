@@ -33,6 +33,24 @@ describe('Authenticate User Controller', () => {
       password: 'admin123',
     });
 
-    expect(response.status).toBe(201);
+    expect(response.status).toBe(200);
+  });
+
+  it('should not to be able to authenticate user to incorrect password', async () => {
+    const response = await request(app).post('/sessions').send({
+      email: 'admin@rentx.com.br',
+      password: 'incorrectPassword',
+    });
+
+    expect(response.status).toBe(400);
+  });
+
+  it('should not to be able to authenticate user to incorrect email', async () => {
+    const response = await request(app).post('/sessions').send({
+      email: 'incorrectmail@rentx.com.br',
+      password: 'admin123',
+    });
+
+    expect(response.status).toBe(400);
   });
 });

@@ -14,7 +14,7 @@ class CreateUserUseCase {
   ) {}
 
   async execute({
-    name
+    name,
     password,
     email,
     driver_license,
