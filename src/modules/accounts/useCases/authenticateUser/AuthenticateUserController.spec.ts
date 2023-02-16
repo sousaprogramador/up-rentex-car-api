@@ -18,7 +18,7 @@ describe('Authenticate User Controller', () => {
 
     await connection.query(
       `INSERT INTO USERS(id, name, email, password, is_admin, created_at, driver_license) 
-      VALUES('${id}', 'admin', 'admin@rentx.com.br', '${password}', true, 'now()', 'XXXXXX')`,
+      VALUES('${id}', 'admin', 'admin@uprental.com.br', '${password}', true, 'now()', 'XXXXXX')`,
     );
   });
 
@@ -29,7 +29,7 @@ describe('Authenticate User Controller', () => {
 
   it('should to be able to authenticate user', async () => {
     const response = await request(app).post('/sessions').send({
-      email: 'admin@rentx.com.br',
+      email: 'admin@uprental.com.br',
       password: 'admin123',
     });
 
@@ -38,7 +38,7 @@ describe('Authenticate User Controller', () => {
 
   it('should not to be able to authenticate user to incorrect password', async () => {
     const response = await request(app).post('/sessions').send({
-      email: 'admin@rentx.com.br',
+      email: 'admin@uprental.com.br',
       password: 'incorrectPassword',
     });
 
@@ -47,7 +47,7 @@ describe('Authenticate User Controller', () => {
 
   it('should not to be able to authenticate user to incorrect email', async () => {
     const response = await request(app).post('/sessions').send({
-      email: 'incorrectmail@rentx.com.br',
+      email: 'incorrectmail@uprental.com.br',
       password: 'admin123',
     });
 
