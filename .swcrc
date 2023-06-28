@@ -1,0 +1,16 @@
+{
+  "jsc": {
+      "parser": {
+          "syntax": "typescript",
+          "decorators": true
+      },
+      "baseUrl": "./src",
+      "keepClassNames": true,
+      "paths": {
+          "#seedwork/*": [
+              "./@seedwork/*"
+          ],
+        }
+      }
+  }
+}

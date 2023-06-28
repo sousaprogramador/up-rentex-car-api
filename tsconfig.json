@@ -8,6 +8,14 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
+    "paths": {
+      "#seedwork/*": [
+        "./@seedwork/*"
+      ],
+      "#accounts/*": [
+        "./accounts/*"
+      ],
+    },
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
