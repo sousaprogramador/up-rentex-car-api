@@ -46,7 +46,7 @@ export class User extends AggregateRoot<UserId, UserProperties, UserPropsJson> {
   }
 
   get email() {
-    return this.props.name;
+    return this.props.email;
   }
 
   private set email(value: string) {
