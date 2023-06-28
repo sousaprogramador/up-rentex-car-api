@@ -2,7 +2,7 @@ import { User } from '../../domain/entities';
 import { UserOutputMapper } from './user-output';
 
 describe('UserOutputMapper Unit Tests', () => {
-  it('should convert a category in output', () => {
+  it('should convert a user in output', () => {
     const created_at = new Date();
     const entity = new User({
       name: 'Some testing',

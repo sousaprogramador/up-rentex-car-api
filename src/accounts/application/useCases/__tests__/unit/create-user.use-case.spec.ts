@@ -1,7 +1,7 @@
 import CreateUserUseCase from '../../create-user.use-case';
 import UserInMemoryRepository from '../../../../infra/db/in-memory/user-in-memory.repository';
 
-describe('CreateCategoryUseCase Unit Tests', () => {
+describe('CreateUserUseCase Unit Tests', () => {
   let useCase: CreateUserUseCase.UseCase;
   let repository: UserInMemoryRepository;
 
