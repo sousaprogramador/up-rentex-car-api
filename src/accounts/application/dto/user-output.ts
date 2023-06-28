@@ -1,4 +1,4 @@
-import { User } from 'src/accounts/domain/entities';
+import { User } from '../../domain/entities';
 
 export type UserOutput = {
   id: string;

@@ -1,7 +1,7 @@
 import Entity from '../../entity/entity';
 import { InMemorySearchableRepository } from '../in-memory.repository';
 import { SearchParams, SearchResult } from '../repository-contracts';
-import UniqueEntityId from '#seedwork/domain/value-objects/unique-entity-id.vo';
+import UniqueEntityId from '../../../domain/value-objects/unique-entity-id.vo';
 
 type StubEntityProps = {
   name: string;
@@ -13,7 +13,7 @@ class StubEntity extends Entity<UniqueEntityId, StubEntityProps> {
     super(props, entityId ?? new UniqueEntityId());
   }
 
-  toJSON(): Required<{ id: string } & StubEntityProps> {
+  toJSON(): { id: string } & StubEntityProps {
     return {
       id: this.id,
       name: this.props.name,
@@ -22,7 +22,10 @@ class StubEntity extends Entity<UniqueEntityId, StubEntityProps> {
   }
 }
 
-class StubInMemorySearchableRepository extends InMemorySearchableRepository<StubEntity> {
+class StubInMemorySearchableRepository extends InMemorySearchableRepository<
+  StubEntity,
+  UniqueEntityId
+> {
   sortableFields: string[] = ['name'];
 
   protected async applyFilter(

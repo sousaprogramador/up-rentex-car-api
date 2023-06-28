@@ -1,6 +1,6 @@
 import Entity from '../../entity/entity';
 import { InMemoryRepository } from '../in-memory.repository';
-import { NotFoundError } from '#seedwork/domain/errors';
+import { NotFoundError } from '../../errors';
 import UniqueEntityId from '../../value-objects/unique-entity-id.vo';
 
 type StubEntityProps = {
@@ -22,7 +22,10 @@ class StubEntity extends Entity<UniqueEntityId, StubEntityProps> {
   }
 }
 
-class StubInMemoryRepository extends InMemoryRepository<StubEntity> {}
+class StubInMemoryRepository extends InMemoryRepository<
+  StubEntity,
+  UniqueEntityId
+> {}
 
 describe('InMemoryRepository Unit Test', () => {
   let repository: StubInMemoryRepository;

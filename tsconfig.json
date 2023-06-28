@@ -6,24 +6,14 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "target": "ES2021",
-    "sourceMap": true,
-    "paths": {
-      "#seedwork/*": [
-        "./@seedwork/*"
-      ],
-      "#accounts/*": [
-        "./accounts/*"
-      ],
-    },
-    "outDir": "./dist",
-    "baseUrl": "./",
+    "target": "es2017",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "allowJs": true
   }
 }

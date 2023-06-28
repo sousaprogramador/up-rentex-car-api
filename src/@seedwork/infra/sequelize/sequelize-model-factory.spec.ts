@@ -6,12 +6,11 @@ import {
   DataType,
 } from 'sequelize-typescript';
 import { SequelizeModelFactory } from './sequelize-model-factory';
-import _chance from 'chance';
+import * as chance from 'chance';
 import { validate as uuidValidate } from 'uuid';
 import { setupSequelize } from '../testing/helpers/db';
 
-const chance = _chance();
-
+const _chance = chance();
 @Table({})
 class StubModel extends Model {
   @PrimaryKey
@@ -22,8 +21,8 @@ class StubModel extends Model {
   declare name;
 
   static mockFactory = jest.fn(() => ({
-    id: chance.guid({ version: 4 }),
-    name: chance.word(),
+    id: _chance.guid({ version: 4 }),
+    name: _chance.word(),
   }));
 
   static factory() {
@@ -123,7 +122,7 @@ describe('SequelizeModelFactory Unit Tests', () => {
     models = await StubModel.factory()
       .count(2)
       .bulkCreate(() => ({
-        id: chance.guid({ version: 4 }),
+        id: _chance.guid({ version: 4 }),
         name: 'test',
       }));
     expect(models).toHaveLength(2);
@@ -166,7 +165,7 @@ describe('SequelizeModelFactory Unit Tests', () => {
     models = StubModel.factory()
       .count(2)
       .bulkMake(() => ({
-        id: chance.guid({ version: 4 }),
+        id: _chance.guid({ version: 4 }),
         name: 'test',
       }));
 
