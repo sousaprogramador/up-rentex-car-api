@@ -13,9 +13,7 @@ export type UserProperties = {
   created_at?: Date;
 };
 
-export type UserPropsJson = Required<
-  { id: string } & Omit<UserProperties, 'password'>
->;
+export type UserPropsJson = Required<{ id: string } & UserProperties>;
 
 export class UserId extends UniqueEntityId {}
 
@@ -109,10 +107,11 @@ export class User extends AggregateRoot<UserId, UserProperties, UserPropsJson> {
     return this.props.created_at;
   }
 
-  toJSON(): Required<{ id: string } & Omit<UserProperties, 'password'>> {
+  toJSON(): Required<{ id: string } & UserProperties> {
     return {
       id: this.id.toString(),
       name: this.name,
+      password: this.password,
       email: this.email,
       avatar: this.avatar,
       driver_licenses: this.driver_licenses,
