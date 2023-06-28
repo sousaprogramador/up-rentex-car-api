@@ -3,6 +3,7 @@ import {
   IsDate,
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   MaxLength,
 } from 'class-validator';
@@ -27,6 +28,7 @@ export class UserRules {
   password: string;
 
   @IsString()
+  @IsOptional()
   avatar?: string | null;
 
   @IsString()
@@ -34,9 +36,11 @@ export class UserRules {
   driver_licenses: string;
 
   @IsBoolean()
+  @IsOptional()
   is_active?: boolean;
 
   @IsDate()
+  @IsOptional()
   created_at?: Date;
 
   constructor(data: UserProperties) {

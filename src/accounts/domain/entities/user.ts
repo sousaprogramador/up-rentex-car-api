@@ -1,5 +1,7 @@
 import UniqueEntityId from '../../../@seedwork/domain/value-objects/unique-entity-id.vo';
 import AggregateRoot from '../../../@seedwork/domain/entity/aggregate-root';
+import UserValidatorFactory from '../validators/user.validator';
+import { EntityValidationError } from '../../../@seedwork/domain';
 
 export type UserProperties = {
   name: string;
@@ -27,6 +29,24 @@ export class User extends AggregateRoot<UserId, UserProperties, UserPropsJson> {
     this.driver_licenses = this.props.driver_licenses;
     this.props.is_active = this.props.is_active ?? true;
     this.props.created_at = this.props.created_at ?? new Date();
+  }
+
+  update(data: UserProperties): void {
+    User.validate(data);
+    this.name = data.name;
+    this.email = data.email;
+    this.password = data.password;
+    this.avatar = data.avatar ?? null;
+    this.driver_licenses = data.driver_licenses;
+    this.props.is_active = data.is_active;
+  }
+
+  static validate(props: UserProperties) {
+    const validator = UserValidatorFactory.create();
+    const isValid = validator.validate(props);
+    if (!isValid) {
+      throw new EntityValidationError(validator.errors);
+    }
   }
 
   activate() {
