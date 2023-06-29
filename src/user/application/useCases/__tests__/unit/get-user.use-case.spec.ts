@@ -37,6 +37,7 @@ describe('GetUserUseCase Unit Tests', () => {
       id: items[0].id,
       name: 'some test',
       email: 'sometest@mail.com',
+      password: '1234',
       driver_licenses: '1234',
       is_active: true,
       avatar: null,

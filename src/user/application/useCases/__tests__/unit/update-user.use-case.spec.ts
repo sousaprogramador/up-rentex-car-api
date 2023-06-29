@@ -51,6 +51,7 @@ describe('UpdateUserUseCase Unit Tests', () => {
       id: entity.id,
       name: 'some test',
       email: 'sometest@mail.com',
+      password: '1234',
       driver_licenses: '1234',
       is_active: false,
       avatar: null,
@@ -71,6 +72,7 @@ describe('UpdateUserUseCase Unit Tests', () => {
         id: string;
         name: string;
         email: string;
+        password: string;
         driver_licenses: string;
         avatar: null | string;
         is_active?: boolean;
@@ -92,6 +94,7 @@ describe('UpdateUserUseCase Unit Tests', () => {
           id: entity.id,
           name: 'some test',
           email: 'sometest@mail.com',
+          password: '1234',
           driver_licenses: '1234',
           is_active: true,
           avatar: '',
@@ -112,6 +115,7 @@ describe('UpdateUserUseCase Unit Tests', () => {
           id: entity.id,
           name: 'some test2',
           email: 'sometest@mail.com',
+          password: '1234',
           driver_licenses: '123',
           is_active: false,
           avatar: 'src',
@@ -132,6 +136,7 @@ describe('UpdateUserUseCase Unit Tests', () => {
           id: entity.id,
           name: 'some test3',
           email: 'sometest@mail.com',
+          password: '1234',
           driver_licenses: '123',
           is_active: true,
           avatar: 'src/img',
@@ -154,6 +159,7 @@ describe('UpdateUserUseCase Unit Tests', () => {
         id: entity.id,
         name: i.expected.name,
         email: i.expected.email,
+        password: i.expected.password,
         driver_licenses: i.expected.driver_licenses,
         is_active: i.expected.is_active,
         avatar: i.expected.avatar,

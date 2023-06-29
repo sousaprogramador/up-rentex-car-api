@@ -18,6 +18,7 @@ describe('UserOutputMapper Unit Tests', () => {
       id: entity.id,
       name: 'Some testing',
       email: 'mail@testing.com',
+      password: '123456',
       driver_licenses: 'AB',
       is_active: true,
       avatar: null,
