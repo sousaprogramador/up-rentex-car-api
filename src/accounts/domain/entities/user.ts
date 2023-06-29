@@ -21,6 +21,7 @@ export class UserId extends UniqueEntityId {}
 export class User extends AggregateRoot<UserId, UserProperties, UserPropsJson> {
   constructor(public readonly props: UserProperties, entityId?: UserId) {
     super(props, entityId ?? new UserId());
+    User.validate(props);
     this.name = this.props.name;
     this.email = this.props.email;
     this.password = this.props.password;
