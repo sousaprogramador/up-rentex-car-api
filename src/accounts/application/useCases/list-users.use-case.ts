@@ -12,7 +12,7 @@ export namespace ListUsersUseCase {
     constructor(private userRepo: UserRepository.Repository) {}
 
     async execute(input: Input): Promise<Output> {
-      const params = new UserRepository.SearchParams(input);
+      const params = UserRepository.SearchParams.create(input);
       const searchResult = await this.userRepo.search(params);
       return this.toOutput(searchResult);
     }
@@ -26,7 +26,7 @@ export namespace ListUsersUseCase {
     }
   }
 
-  export type Input = SearchInputDto;
+  export type Input = SearchInputDto<{ name?: string; email?: string }>;
 
   export type Output = PaginationOutputDto<UserOutput>;
 }

@@ -4,7 +4,7 @@ import { User, UserId } from '../../../domain/entities';
 import UserRepository from '../../../domain/repository/user.repository';
 
 export class UserInMemoryRepository
-  extends InMemorySearchableRepository<User, UserId>
+  extends InMemorySearchableRepository<User, UserId, UserRepository.Filter>
   implements UserRepository.Repository
 {
   sortableFields: string[] = ['name', 'created_at'];
@@ -18,7 +18,13 @@ export class UserInMemoryRepository
     }
 
     return items.filter((i) => {
-      return i.props.name.toLowerCase().includes(filter.toLowerCase());
+      const containsName =
+        filter.name &&
+        i.props.name.toLowerCase().includes(filter.name.toLowerCase());
+      const hasType =
+        filter.email &&
+        i.props.email.toLowerCase().includes(filter.email.toLowerCase());
+      return filter.name && filter.email;
     });
   }
 
