@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AccountsModule } from './user/infra/nest/accounts.module';
+import { AccountsModule } from './user/infra/nest/user.module';
 import { seedworkModule } from './@seedwork/infra/nest/@seedwork.module';
 
 @Module({

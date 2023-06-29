@@ -10,7 +10,7 @@ import UserRepository from '../../domain/repository/user.repository';
 import {
   UserInMemoryRepository,
   UserModel,
-  UserRepository as UserSequelizeRepository,
+  UserSequelizeRepository,
 } from '../db';
 
 export namespace USER_PROVIDERS {

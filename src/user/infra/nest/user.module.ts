@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AccountsController } from './user.controller';
+import { UsersController } from './user.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { USER_PROVIDERS } from './user.providers';
 import { UserInMemoryRepository, UserModel } from '../db';
 
 @Module({
   imports: [],
-  controllers: [AccountsController],
+  controllers: [UsersController],
   providers: [
     {
       provide: 'UserInMemoryRepository',
