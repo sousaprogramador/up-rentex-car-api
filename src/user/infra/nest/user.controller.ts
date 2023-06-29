@@ -1,4 +1,16 @@
-import { Controller, Get, Post, Body, Inject } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Inject,
+  Query,
+  ParseUUIDPipe,
+  Param,
+  Put,
+  HttpCode,
+  Delete,
+} from '@nestjs/common';
 import {
   CreateUserUseCase,
   UpdateUserUseCase,
@@ -7,8 +19,13 @@ import {
   DeleteUserUseCase,
 } from '../../application/useCases';
 import { CreateUserDto } from './dto/create-user.dto';
+import { SearchUserDto } from './dto/search-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { UserOutput } from '../../application';
-import { UserPresenter } from './presenter/user.presenter';
+import {
+  UserCollectionPresenter,
+  UserPresenter,
+} from './presenter/user.presenter';
 @Controller('users')
 export class UsersController {
   @Inject(CreateUserUseCase.UseCase)
@@ -27,14 +44,43 @@ export class UsersController {
   private listUseCase: ListUsersUseCase.UseCase;
 
   @Get()
-  getHello(): any {
-    return this.getUseCase.execute({ id: 'fake' });
+  async search(@Query() searchParams: SearchUserDto) {
+    const output = await this.listUseCase.execute(searchParams);
+    return new UserCollectionPresenter(output);
   }
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
     const output = await this.createUseCase.execute(createUserDto);
     return UsersController.userToResponse(output);
+  }
+
+  @Get(':id')
+  async findOne(
+    @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
+  ) {
+    const output = await this.getUseCase.execute({ id });
+    return UsersController.userToResponse(output);
+  }
+
+  @Put(':id') //PUT vs PATCH
+  async update(
+    @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
+    @Body() updateUserDto: UpdateUserDto,
+  ) {
+    const output = await this.updateUseCase.execute({
+      id,
+      ...updateUserDto,
+    });
+    return UsersController.userToResponse(output);
+  }
+
+  @HttpCode(204)
+  @Delete(':id')
+  remove(
+    @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
+  ) {
+    return this.deleteUseCase.execute({ id });
   }
 
   static userToResponse(output: UserOutput) {
