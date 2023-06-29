@@ -1,4 +1,4 @@
-import { Controller, Get, Inject } from '@nestjs/common';
+import { Controller, Get, Post, Body, Inject } from '@nestjs/common';
 import {
   CreateUserUseCase,
   UpdateUserUseCase,
@@ -6,6 +6,7 @@ import {
   GetUserUseCase,
   DeleteUserUseCase,
 } from '../../application/useCases';
+import { CreateAccountDto } from './dto/create-accounts.dto';
 @Controller('accounts')
 export class AccountsController {
   @Inject(CreateUserUseCase.UseCase)
@@ -26,5 +27,11 @@ export class AccountsController {
   @Get()
   getHello(): any {
     return this.getUseCase.execute({ id: 'fake' });
+  }
+
+  @Post()
+  async create(@Body() createAccountDto: CreateAccountDto) {
+    const output = await this.createUseCase.execute(createAccountDto);
+    return output;
   }
 }
