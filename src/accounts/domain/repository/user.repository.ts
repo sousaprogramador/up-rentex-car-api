@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/adjacent-overload-signatures */
 /* eslint-disable @typescript-eslint/no-namespace */
 import {
   SearchableRepositoryInterface,
@@ -37,6 +38,20 @@ export namespace UserRepository {
           email: props.filter?.email || null,
         },
       });
+    }
+
+    protected set filter(value: Filter | null) {
+      const _value =
+        !value || (value as unknown) === '' || typeof value !== 'object'
+          ? null
+          : value;
+
+      const filter = {
+        ...(_value.name && { name: `${_value?.name}` }),
+        ...(_value.email && { type: _value.email }),
+      };
+
+      this._filter = Object.keys(filter).length === 0 ? null : filter;
     }
   }
 

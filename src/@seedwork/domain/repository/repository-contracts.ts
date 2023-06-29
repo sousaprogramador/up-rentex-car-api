@@ -1,12 +1,13 @@
+import AggregateRoot from '../entity/aggregate-root';
 import Entity from '../entity/entity';
 import { ValueObject } from '../value-objects';
-import AggregateRoot from '../entity/aggregate-root';
 
 export interface RepositoryInterface<
   E extends AggregateRoot,
   EntityId extends ValueObject,
 > {
   insert(entity: E): Promise<void>;
+  bulkInsert(entities: E[]): Promise<void>;
   findById(id: string | EntityId): Promise<E>;
   findAll(): Promise<E[]>;
   update(entity: E): Promise<void>;
@@ -96,7 +97,7 @@ export class SearchParams<Filter = string> {
     return this._filter;
   }
 
-  private set filter(value: Filter | null) {
+  protected set filter(value: Filter | null) {
     this._filter =
       value === null || value === undefined || (value as unknown) === ''
         ? null
@@ -148,6 +149,10 @@ export class SearchResult<E extends Entity = Entity, Filter = string> {
     };
   }
 }
+
+//category.props.name
+
+//Entidade e Objetos
 
 export interface SearchableRepositoryInterface<
   E extends Entity,

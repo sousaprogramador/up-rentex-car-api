@@ -3,6 +3,7 @@ import { UserModel } from '../user.model';
 import { setupSequelize } from '../../../../../@seedwork/infra';
 import { User, UserId } from '../../../../domain/entities';
 import { NotFoundError } from '../../../../../@seedwork/domain';
+import UserRepository from '../../../../domain/repository/user.repository';
 describe('UserSequelizeRepository Unit Tests', () => {
   setupSequelize({ models: [UserModel] });
 
@@ -143,6 +144,71 @@ describe('UserSequelizeRepository Unit Tests', () => {
 
     await expect(repository.findById(entity.id)).rejects.toThrow(
       new NotFoundError(`Entity Not Found using ID ${entity.id}`),
+    );
+  });
+
+  it('should apply paginate and filter', async () => {
+    const users = [
+      User.fake()
+        .aUser()
+        .withName('test')
+        .withCreatedAt(new Date(new Date().getTime() + 5000))
+        .build(),
+      User.fake()
+        .aUser()
+        .withName('a')
+        .withCreatedAt(new Date(new Date().getTime() + 4000))
+        .build(),
+      User.fake()
+        .aUser()
+        .withName('TEST')
+        .withCreatedAt(new Date(new Date().getTime() + 3000))
+        .build(),
+      User.fake()
+        .aUser()
+        .withName('TeSt')
+        .withCreatedAt(new Date(new Date().getTime() + 1000))
+        .build(),
+    ];
+
+    await repository.bulkInsert(users);
+
+    let searchOutput = await repository.search(
+      UserRepository.SearchParams.create({
+        page: 1,
+        per_page: 2,
+        filter: { name: 'TEST' },
+      }),
+    );
+    expect(searchOutput.toJSON(true)).toMatchObject(
+      new UserRepository.SearchResult({
+        items: [users[0], users[2]],
+        total: 3,
+        current_page: 1,
+        per_page: 2,
+        sort: null,
+        sort_dir: null,
+        filter: { name: 'TEST' },
+      }).toJSON(true),
+    );
+
+    searchOutput = await repository.search(
+      UserRepository.SearchParams.create({
+        page: 2,
+        per_page: 2,
+        filter: { name: 'TEST' },
+      }),
+    );
+    expect(searchOutput.toJSON(true)).toMatchObject(
+      new UserRepository.SearchResult({
+        items: [users[3]],
+        total: 3,
+        current_page: 2,
+        per_page: 2,
+        sort: null,
+        sort_dir: null,
+        filter: { name: 'TEST' },
+      }).toJSON(true),
     );
   });
 });
