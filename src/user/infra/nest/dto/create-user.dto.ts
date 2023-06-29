@@ -1,7 +1,7 @@
 import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { CreateUserUseCase } from '../../../application/useCases';
 
-export class CreateAccountDto implements CreateUserUseCase.Input {
+export class CreateUserDto implements CreateUserUseCase.Input {
   @IsString()
   @IsNotEmpty()
   name: string;

@@ -1,4 +1,4 @@
-import { UserCollectionPresenter, UserPresenter } from './accounts.presenter';
+import { UserCollectionPresenter, UserPresenter } from './user.presenter';
 import { instanceToPlain } from 'class-transformer';
 import { PaginationPresenter } from '../../../../@seedwork/infra/nest/presenters/pagination.presenter';
 

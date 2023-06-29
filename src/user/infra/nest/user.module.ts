@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AccountsController } from './accounts.controller';
+import { AccountsController } from './user.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { USER_PROVIDERS } from './accounts.providers';
+import { USER_PROVIDERS } from './user.providers';
 import { UserInMemoryRepository, UserModel } from '../db';
 
 @Module({
