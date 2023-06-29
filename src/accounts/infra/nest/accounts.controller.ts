@@ -7,6 +7,8 @@ import {
   DeleteUserUseCase,
 } from '../../application/useCases';
 import { CreateAccountDto } from './dto/create-accounts.dto';
+import { UserOutput } from '../../application';
+import { UserPresenter } from './presenter/accounts.presenter';
 @Controller('accounts')
 export class AccountsController {
   @Inject(CreateUserUseCase.UseCase)
@@ -32,6 +34,10 @@ export class AccountsController {
   @Post()
   async create(@Body() createAccountDto: CreateAccountDto) {
     const output = await this.createUseCase.execute(createAccountDto);
-    return output;
+    return AccountsController.userToResponse(output);
+  }
+
+  static userToResponse(output: UserOutput) {
+    return new UserPresenter(output);
   }
 }

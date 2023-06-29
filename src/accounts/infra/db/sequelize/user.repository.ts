@@ -9,7 +9,9 @@ import {
   NotFoundError,
 } from '../../../../@seedwork/domain';
 
-export class UserRepository implements UserRepositoryContract.Repository {
+export class UserSequelizeRepository
+  implements UserRepositoryContract.Repository
+{
   sortableFields: string[] = ['name', 'created_at'];
   orderBy = {
     mysql: {

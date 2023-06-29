@@ -27,6 +27,9 @@ export class UserModel extends Model<UserModelProps> {
   declare name: string;
 
   @Column({ allowNull: false, type: DataType.STRING(255) })
+  declare email: string;
+
+  @Column({ allowNull: false, type: DataType.STRING(255) })
   declare password: string;
 
   @Column({ allowNull: true, type: DataType.STRING(255) })
