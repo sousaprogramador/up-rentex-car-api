@@ -38,7 +38,7 @@ export class User extends AggregateRoot<UserId, UserProperties, UserPropsJson> {
     this.password = data.password;
     this.avatar = data.avatar ?? null;
     this.driver_licenses = data.driver_licenses;
-    this.props.is_active = data.is_active;
+    this.is_active = data.is_active;
   }
 
   static validate(props: UserProperties) {

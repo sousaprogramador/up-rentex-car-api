@@ -24,5 +24,5 @@ export class CreateUserDto implements CreateUserUseCase.Input {
 
   @IsBoolean()
   @IsOptional()
-  is_active: boolean;
+  is_active?: boolean;
 }

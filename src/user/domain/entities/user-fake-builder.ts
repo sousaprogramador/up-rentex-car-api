@@ -7,7 +7,7 @@ export class UserFakeBuilder<TBuild = any> {
   // auto generated in entity
   private _entity_id = undefined;
   private _name: PropOrFactory<string> = (_index) => this.chance.word();
-  private _email: PropOrFactory<string> = (_index) => this.chance.word();
+  private _email: PropOrFactory<string> = (_index) => this.chance.email();
   private _password: PropOrFactory<string> = (_index) => this.chance.word();
   private _driver_licenses: PropOrFactory<string> = (_index) =>
     this.chance.word();
@@ -64,13 +64,13 @@ export class UserFakeBuilder<TBuild = any> {
     return this;
   }
 
-  withDescription(valueOrFactory: PropOrFactory<string | null>) {
-    this._avatar = valueOrFactory;
+  withDriverLicenses(valueOrFactory: PropOrFactory<string>) {
+    this._driver_licenses = valueOrFactory;
     return this;
   }
 
-  withInvalidDescriptionNotAString(value?: any) {
-    this._avatar = value ?? 5;
+  withAvatar(valueOrFactory: PropOrFactory<string | null>) {
+    this._avatar = valueOrFactory;
     return this;
   }
 
@@ -134,8 +134,16 @@ export class UserFakeBuilder<TBuild = any> {
     return this.getValue('email');
   }
 
-  get description() {
-    return this.getValue('description');
+  get password() {
+    return this.getValue('password');
+  }
+
+  get driver_licenses() {
+    return this.getValue('driver_licenses');
+  }
+
+  get avatar() {
+    return this.getValue('avatar');
   }
 
   get is_active() {

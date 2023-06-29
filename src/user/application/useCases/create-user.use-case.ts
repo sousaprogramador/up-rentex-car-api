@@ -20,7 +20,7 @@ export namespace CreateUserUseCase {
     password: string;
     avatar?: string;
     driver_licenses: string;
-    is_active: boolean;
+    is_active?: boolean;
   };
 
   export type Output = UserOutput;

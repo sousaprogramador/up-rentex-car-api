@@ -27,12 +27,12 @@ export namespace USER_PROVIDERS {
       },
       inject: [getModelToken(UserModel)],
     };
-  }
 
-  export const USER_REPOSITORY = {
-    provide: 'UserInMemoryRepository',
-    useExisting: 'UserInMemoryRepository',
-  };
+    export const USER_REPOSITORY = {
+      provide: 'UserInMemoryRepository',
+      useExisting: 'UserInMemoryRepository',
+    };
+  }
 
   export namespace USE_CASES {
     export const CREATE_USER_USE_CASE = {
@@ -40,7 +40,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new CreateUserUseCase.UseCase(categoryRepo);
       },
-      inject: [USER_REPOSITORY.provide],
+      inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const UPDATE_USER_USE_CASE = {
@@ -48,7 +48,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new UpdateUserUseCase.UseCase(categoryRepo);
       },
-      inject: [USER_REPOSITORY.provide],
+      inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const LIST_USERS_USE_CASE = {
@@ -56,7 +56,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new ListUsersUseCase.UseCase(categoryRepo);
       },
-      inject: [USER_REPOSITORY.provide],
+      inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const GET_USER_USE_CASE = {
@@ -64,7 +64,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new GetUserUseCase.UseCase(categoryRepo);
       },
-      inject: [USER_REPOSITORY.provide],
+      inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const DELETE_USER_USE_CASE = {
@@ -72,7 +72,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new DeleteUserUseCase.UseCase(categoryRepo);
       },
-      inject: [USER_REPOSITORY.provide],
+      inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
   }
 }

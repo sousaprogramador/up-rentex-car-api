@@ -15,4 +15,4 @@ import { UserInMemoryRepository, UserModel } from '../db';
     ...Object.values(USER_PROVIDERS.USE_CASES),
   ],
 })
-export class AccountsModule {}
+export class UsersModule {}
