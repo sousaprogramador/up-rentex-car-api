@@ -24,7 +24,7 @@ export class UserInMemoryRepository
       const hasType =
         filter.email &&
         i.props.email.toLowerCase().includes(filter.email.toLowerCase());
-      return filter.name && filter.email;
+      return containsName && hasType;
     });
   }
 

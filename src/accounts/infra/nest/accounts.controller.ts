@@ -25,6 +25,6 @@ export class AccountsController {
 
   @Get()
   getHello(): any {
-    return this.listUseCase.execute({});
+    return this.getUseCase.execute({ id: 'fake' });
   }
 }

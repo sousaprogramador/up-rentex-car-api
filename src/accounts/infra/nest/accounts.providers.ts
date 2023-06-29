@@ -10,7 +10,7 @@ import UserRepository from '../../domain/repository/user.repository';
 import {
   UserInMemoryRepository,
   UserModel,
-  UserRepository as UserSequelize,
+  UserRepository as UserSequelizeRepository,
 } from '../db';
 
 export namespace USER_PROVIDERS {
@@ -23,16 +23,16 @@ export namespace USER_PROVIDERS {
     export const USER_SEQUELIZE_REPOSITORY = {
       provide: 'UserSequelizeRepository',
       useFactory: (categoryModel: typeof UserModel) => {
-        return new UserSequelize(categoryModel);
+        return new UserSequelizeRepository(categoryModel);
       },
       inject: [getModelToken(UserModel)],
     };
-
-    export const USER_REPOSITORY = {
-      provide: 'UserRepository',
-      useExisting: 'UserInMemoryRepository',
-    };
   }
+
+  export const USER_REPOSITORY = {
+    provide: 'UserInMemoryRepository',
+    useExisting: 'UserInMemoryRepository',
+  };
 
   export namespace USE_CASES {
     export const CREATE_USER_USE_CASE = {
@@ -40,7 +40,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new CreateUserUseCase.UseCase(categoryRepo);
       },
-      inject: [REPOSITORIES.USER_REPOSITORY.provide],
+      inject: [USER_REPOSITORY.provide],
     };
 
     export const UPDATE_USER_USE_CASE = {
@@ -48,7 +48,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new UpdateUserUseCase.UseCase(categoryRepo);
       },
-      inject: [REPOSITORIES.USER_REPOSITORY.provide],
+      inject: [USER_REPOSITORY.provide],
     };
 
     export const LIST_USERS_USE_CASE = {
@@ -56,7 +56,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new ListUsersUseCase.UseCase(categoryRepo);
       },
-      inject: [REPOSITORIES.USER_REPOSITORY.provide],
+      inject: [USER_REPOSITORY.provide],
     };
 
     export const GET_USER_USE_CASE = {
@@ -64,7 +64,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new GetUserUseCase.UseCase(categoryRepo);
       },
-      inject: [REPOSITORIES.USER_REPOSITORY.provide],
+      inject: [USER_REPOSITORY.provide],
     };
 
     export const DELETE_USER_USE_CASE = {
@@ -72,7 +72,7 @@ export namespace USER_PROVIDERS {
       useFactory: (categoryRepo: UserRepository.Repository) => {
         return new DeleteUserUseCase.UseCase(categoryRepo);
       },
-      inject: [REPOSITORIES.USER_REPOSITORY.provide],
+      inject: [USER_REPOSITORY.provide],
     };
   }
 }
