@@ -23,3 +23,10 @@ export class EntityValidationError extends BaseValidationError {
     this.name = 'EntityValidationError';
   }
 }
+
+export class SearchValidationError extends BaseValidationError {
+  constructor(public error: FieldsErrors = {}) {
+    super(error, 'Search Validation Error');
+    this.name = 'SearchValidationError';
+  }
+}

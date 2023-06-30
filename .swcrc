@@ -1,16 +1,19 @@
 {
   "jsc": {
       "parser": {
-          "syntax": "typescript",
-          "decorators": true
+        "syntax": "typescript",
+        "tsx": false,
+        "decorators": true
       },
-      "baseUrl": "./src",
+      "target": "es2017",
       "keepClassNames": true,
-      "paths": {
-          "#seedwork/*": [
-              "./@seedwork/*"
-          ],
-        }
+      "transform": {
+        "legacyDecorator": true,
+        "decoratorMetadata": true
       }
-  }
+    },
+    "module": {
+      "type": "commonjs",
+      "noInterop": true
+    }
 }
