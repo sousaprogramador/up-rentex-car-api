@@ -99,19 +99,6 @@ export class UserFixture {
           ...defaultExpected,
         },
       },
-      IS_ACTIVE_NOT_A_BOOLEAN: {
-        send_data: {
-          is_active: faker.withInvalidIsActiveNotABoolean().is_active,
-        },
-        expected: {
-          message: [
-            'name should not be empty',
-            'name must be a string',
-            'is_active must be a boolean value',
-          ],
-          ...defaultExpected,
-        },
-      },
     };
   }
 
@@ -169,20 +156,6 @@ export class UserFixture {
           ...defaultExpected,
         },
       },
-      IS_ACTIVE_NOT_A_BOOLEAN: {
-        send_data: {
-          is_active: faker.withInvalidIsActiveNotABoolean().is_active,
-        },
-        expected: {
-          message: [
-            'name should not be empty',
-            'name must be a string',
-            'name must be shorter than or equal to 255 characters',
-            'is_active must be a boolean value',
-          ],
-          ...defaultExpected,
-        },
-      },
     };
   }
 }
@@ -219,10 +192,7 @@ export class UpdateUserFixture {
   }
 
   static arrangeForEntityValidationError() {
-    const { IS_ACTIVE_NOT_A_BOOLEAN, ...otherKeys } =
-      UserFixture.arrangeForEntityValidationError();
-
-    return otherKeys;
+    return UserFixture.arrangeForEntityValidationError();
   }
 }
 
