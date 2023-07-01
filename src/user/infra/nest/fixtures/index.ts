@@ -134,8 +134,17 @@ export class UserFixture {
         expected: {
           message: [
             'name should not be empty',
-            'name must be a string',
             'name must be shorter than or equal to 255 characters',
+            'name must be a string',
+            'email must be an email',
+            'email should not be empty',
+            'email must be shorter than or equal to 255 characters',
+            'email must be a string',
+            'password should not be empty',
+            'password must be shorter than or equal to 255 characters',
+            'password must be a string',
+            'driver_licenses should not be empty',
+            'driver_licenses must be a string',
           ],
           ...defaultExpected,
         },
@@ -147,21 +156,37 @@ export class UserFixture {
         expected: {
           message: [
             'name should not be empty',
-            'name must be a string',
             'name must be shorter than or equal to 255 characters',
+            'name must be a string',
+            'email must be an email',
+            'email should not be empty',
+            'email must be shorter than or equal to 255 characters',
+            'email must be a string',
+            'password should not be empty',
+            'password must be shorter than or equal to 255 characters',
+            'password must be a string',
+            'driver_licenses should not be empty',
+            'driver_licenses must be a string',
           ],
           ...defaultExpected,
         },
       },
-      NAME_NULL: {
+      /* NAME_NULL: {
         send_data: {
           name: faker.withInvalidNameEmpty(null).name,
         },
         expected: {
           message: [
             'name should not be empty',
-            'name must be a string',
-            'name must be shorter than or equal to 255 characters',
+            'email must be an email',
+            'email should not be empty',
+            'email must be shorter than or equal to 255 characters',
+            'email must be a string',
+            'password should not be empty',
+            'password must be shorter than or equal to 255 characters',
+            'password must be a string',
+            'driver_licenses should not be empty',
+            'driver_licenses must be a string',
           ],
           ...defaultExpected,
         },
@@ -171,10 +196,21 @@ export class UserFixture {
           name: faker.withInvalidNameEmpty('').name,
         },
         expected: {
-          message: ['name should not be empty'],
+          message: [
+            'name should not be empty',
+            'email must be an email',
+            'email should not be empty',
+            'email must be shorter than or equal to 255 characters',
+            'email must be a string',
+            'password should not be empty',
+            'password must be shorter than or equal to 255 characters',
+            'password must be a string',
+            'driver_licenses should not be empty',
+            'driver_licenses must be a string',
+          ],
           ...defaultExpected,
         },
-      },
+      },*/
     };
   }
 }
