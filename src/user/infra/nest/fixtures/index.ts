@@ -68,7 +68,12 @@ export class UserFixture {
       EMPTY: {
         send_data: {},
         expected: {
-          message: ['name should not be empty', 'name must be a string'],
+          message: [
+            'name should not be empty',
+            'name must be a string',
+            'email should not be empty',
+            'email must be a string',
+          ],
           ...defaultExpected,
         },
       },
@@ -77,7 +82,12 @@ export class UserFixture {
           name: faker.withInvalidNameEmpty(undefined).name,
         },
         expected: {
-          message: ['name should not be empty', 'name must be a string'],
+          message: [
+            'name should not be empty',
+            'name must be a string',
+            'email should not be empty',
+            'email must be a string',
+          ],
           ...defaultExpected,
         },
       },
@@ -86,7 +96,12 @@ export class UserFixture {
           name: faker.withInvalidNameEmpty(null).name,
         },
         expected: {
-          message: ['name should not be empty', 'name must be a string'],
+          message: [
+            'name should not be empty',
+            'name must be a string',
+            'email should not be empty',
+            'email must be a string',
+          ],
           ...defaultExpected,
         },
       },
@@ -95,7 +110,11 @@ export class UserFixture {
           name: faker.withInvalidNameEmpty('').name,
         },
         expected: {
-          message: ['name should not be empty'],
+          message: [
+            'name should not be empty',
+            'email should not be empty',
+            'email must be a string',
+          ],
           ...defaultExpected,
         },
       },

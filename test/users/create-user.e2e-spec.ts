@@ -1,4 +1,4 @@
-import request from 'supertest';
+import * as request from 'supertest';
 import UserRepository from '../../src/user/domain/repository/user.repository';
 import { USER_PROVIDERS } from '../../src/user/infra/nest/user.providers';
 import { CreateUserFixture } from '../../src/user/infra/nest/fixtures';
