@@ -343,12 +343,7 @@ export class ListUsersFixture {
         },
         expected: {
           entities: [entitiesMap.AAA, entitiesMap.AaA],
-          meta: {
-            total: 3,
-            current_page: 1,
-            last_page: 2,
-            per_page: 2,
-          },
+          meta: { current_page: 1, per_page: 2, last_page: 3, total: 5 },
         },
       },
       {
