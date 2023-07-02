@@ -100,7 +100,7 @@ export class UserFakeBuilder<TBuild = any> {
   }
 
   build(): TBuild {
-    const categories = new Array(this.countObjs).fill(undefined).map(
+    const users = new Array(this.countObjs).fill(undefined).map(
       (_, index) =>
         new User(
           {
@@ -119,7 +119,7 @@ export class UserFakeBuilder<TBuild = any> {
             : this.callFactory(this._entity_id, index),
         ),
     );
-    return this.countObjs === 1 ? (categories[0] as any) : categories;
+    return this.countObjs === 1 ? (users[0] as any) : users;
   }
 
   get entity_id() {

@@ -22,8 +22,8 @@ export namespace USER_PROVIDERS {
 
     export const USER_SEQUELIZE_REPOSITORY = {
       provide: 'UserSequelizeRepository',
-      useFactory: (categoryModel: typeof UserModel) => {
-        return new UserSequelizeRepository(categoryModel);
+      useFactory: (userModel: typeof UserModel) => {
+        return new UserSequelizeRepository(userModel);
       },
       inject: [getModelToken(UserModel)],
     };
@@ -37,40 +37,40 @@ export namespace USER_PROVIDERS {
   export namespace USE_CASES {
     export const CREATE_USER_USE_CASE = {
       provide: CreateUserUseCase.UseCase,
-      useFactory: (categoryRepo: UserRepository.Repository) => {
-        return new CreateUserUseCase.UseCase(categoryRepo);
+      useFactory: (userRepo: UserRepository.Repository) => {
+        return new CreateUserUseCase.UseCase(userRepo);
       },
       inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const UPDATE_USER_USE_CASE = {
       provide: UpdateUserUseCase.UseCase,
-      useFactory: (categoryRepo: UserRepository.Repository) => {
-        return new UpdateUserUseCase.UseCase(categoryRepo);
+      useFactory: (userRepo: UserRepository.Repository) => {
+        return new UpdateUserUseCase.UseCase(userRepo);
       },
       inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const LIST_USERS_USE_CASE = {
       provide: ListUsersUseCase.UseCase,
-      useFactory: (categoryRepo: UserRepository.Repository) => {
-        return new ListUsersUseCase.UseCase(categoryRepo);
+      useFactory: (userRepo: UserRepository.Repository) => {
+        return new ListUsersUseCase.UseCase(userRepo);
       },
       inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const GET_USER_USE_CASE = {
       provide: GetUserUseCase.UseCase,
-      useFactory: (categoryRepo: UserRepository.Repository) => {
-        return new GetUserUseCase.UseCase(categoryRepo);
+      useFactory: (userRepo: UserRepository.Repository) => {
+        return new GetUserUseCase.UseCase(userRepo);
       },
       inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };
 
     export const DELETE_USER_USE_CASE = {
       provide: DeleteUserUseCase.UseCase,
-      useFactory: (categoryRepo: UserRepository.Repository) => {
-        return new DeleteUserUseCase.UseCase(categoryRepo);
+      useFactory: (userRepo: UserRepository.Repository) => {
+        return new DeleteUserUseCase.UseCase(userRepo);
       },
       inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };

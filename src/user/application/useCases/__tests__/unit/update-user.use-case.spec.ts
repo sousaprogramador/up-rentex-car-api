@@ -26,7 +26,7 @@ describe('UpdateUserUseCase Unit Tests', () => {
     ).rejects.toThrow(new NotFoundError(`Entity Not Found using ID fake id`));
   });
 
-  it('should update a category', async () => {
+  it('should update a User', async () => {
     const entity = new User({
       name: 'some test',
       email: 'sometest@mail.com',
