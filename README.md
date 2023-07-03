@@ -1,6 +1,6 @@
 # **API RENTAL CAR**
 
-[![alt text](./public/img/hexagonal.jpg)]
+[![alt text](./public/img/tests.png)]
 
 > ## EXECUCAO
 
