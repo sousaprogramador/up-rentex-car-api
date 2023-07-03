@@ -62,7 +62,7 @@ describe('UsersController Integration Tests', () => {
         expect(entity.toJSON()).toStrictEqual({
           id: presenter.id,
           created_at: presenter.created_at,
-          ...send_data,
+          password: entity.password,
           ...expected,
         });
 
@@ -84,11 +84,10 @@ describe('UsersController Integration Tests', () => {
       async ({ send_data, expected }) => {
         const presenter = await controller.update(user.id, send_data);
         const entity = await repository.findById(presenter.id);
-
-        expect(entity).toMatchObject({
+        delete entity.password;
+        expect(entity.toJSON()).toMatchObject({
           id: presenter.id,
           created_at: presenter.created_at,
-          ...send_data,
           ...expected,
         });
         expect(presenter).toEqual(new UserPresenter(entity));

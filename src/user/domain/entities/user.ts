@@ -35,7 +35,7 @@ export class User extends AggregateRoot<UserId, UserProperties, UserPropsJson> {
     User.validate(data);
     this.name = data.name;
     this.email = data.email;
-    this.password = data.password;
+    //this.password = data.password;
     this.avatar = data.avatar ?? null;
     this.driver_licenses = data.driver_licenses;
     this.is_active = data.is_active;

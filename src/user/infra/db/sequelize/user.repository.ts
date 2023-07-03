@@ -52,7 +52,7 @@ export class UserSequelizeRepository
   }
 
   private async _get(id: string): Promise<UserModel> {
-    return this.userModel.findByPk(id, {
+    return await this.userModel.findByPk(id, {
       rejectOnEmpty: new NotFoundError(`Entity Not Found using ID ${id}`),
     });
   }
