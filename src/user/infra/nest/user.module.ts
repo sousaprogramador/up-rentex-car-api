@@ -2,16 +2,17 @@ import { Module } from '@nestjs/common';
 import { UsersController } from './user.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { USER_PROVIDERS } from './user.providers';
-import { UserInMemoryRepository, UserModel } from '../db';
+import {
+  UserInMemoryRepository,
+  UserModel,
+  UserSequelizeRepository,
+} from '../db';
 
 @Module({
-  imports: [],
+  imports: [SequelizeModule.forFeature([UserModel])],
   controllers: [UsersController],
   providers: [
-    {
-      provide: 'UserInMemoryRepository',
-      useClass: UserInMemoryRepository,
-    },
+    USER_PROVIDERS.REPOSITORIES.USER_SEQUELIZE_REPOSITORY,
     ...Object.values(USER_PROVIDERS.USE_CASES),
   ],
 })

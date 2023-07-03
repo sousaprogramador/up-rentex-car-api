@@ -29,8 +29,8 @@ export namespace USER_PROVIDERS {
     };
 
     export const USER_REPOSITORY = {
-      provide: 'UserInMemoryRepository',
-      useExisting: 'UserInMemoryRepository',
+      provide: 'UserSequelizeRepository',
+      useExisting: 'UserSequelizeRepository',
     };
   }
 

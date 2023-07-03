@@ -12,7 +12,7 @@ fi
 
 yarn install
 
-echo "###### Building @core ######"
+echo "###### START ######"
 
 yarn dev
 
