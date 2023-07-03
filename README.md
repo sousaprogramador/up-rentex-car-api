@@ -1,6 +1,6 @@
 # **API RENTAL CAR**
 
-[(./public/img/hexagonal.jpg)]
+[![alt text](./public/img/hexagonal.jpg)]
 
 > ## EXECUCAO
 
@@ -11,7 +11,7 @@ docker-compose up
 
 ```
 
-[(./public/img/tests.png)]
+[![alt text](./public/img/tests.png)]
 
 > ## APIs construídas no treinamento
 
