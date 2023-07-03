@@ -1,5 +1,7 @@
 # **API RENTAL CAR**
 
+[![alt text](./public/img/hexagonal.jpg)]
+
 > ## EXECUCAO
 
 - http://localhost:3333/docs
