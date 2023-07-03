@@ -8,7 +8,7 @@ import { UserModel } from '../db';
   imports: [SequelizeModule.forFeature([UserModel])],
   controllers: [UsersController],
   providers: [
-    USER_PROVIDERS.REPOSITORIES.USER_IN_MEMORY_REPOSITORY,
+    USER_PROVIDERS.REPOSITORIES.USER_SEQUELIZE_REPOSITORY,
     ...Object.values(USER_PROVIDERS.USE_CASES),
   ],
 })
