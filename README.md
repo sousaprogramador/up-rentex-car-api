@@ -67,3 +67,12 @@
 - Stubs
 - Spies
 - Fakes
+
+> ## EXECUCAO
+
+```
+docker-compose up
+
+```
+
+executar padrao

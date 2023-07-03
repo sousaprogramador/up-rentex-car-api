@@ -1,0 +1,44 @@
+{
+  "containerDefinitions": [
+      {
+          "name": "rental-car-api",
+          "image": "058176607657.dkr.ecr.us-east-1.amazonaws.com/rental-car-api:80d6a3f3a038fac7cfe927c401ecc4d21d25515b",
+          "cpu": 256,
+          "memory": 512,
+          "portMappings": [
+              {
+                  "containerPort": 3002,
+                  "hostPort": 3002,
+                  "protocol": "tcp"
+              }
+          ],
+          "essential": true,
+          "mountPoints": [],
+          "volumesFrom": [],
+          "logConfiguration": {
+              "logDriver": "awslogs",
+              "options": {
+                  "awslogs-create-group": "true",
+                  "awslogs-group": "/ecs/api-rental",
+                  "awslogs-region": "us-east-1",
+                  "awslogs-stream-prefix": "ecs"
+              }
+          }
+      }
+  ],
+  "family": "api-rental",
+  "taskRoleArn": "arn:aws:iam::058176607657:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::058176607657:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "volumes": [],
+  "placementConstraints": [],
+  "requiresCompatibilities": [
+      "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "runtimePlatform": {
+      "cpuArchitecture": "AMD64",
+      "operatingSystemFamily": "LINUX"
+  }
+}
