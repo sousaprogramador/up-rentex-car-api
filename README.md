@@ -1,5 +1,14 @@
 # **Clean Node API**
 
+> ## EXECUCAO
+
+- http://localhost:3333/docs
+
+```
+docker-compose up
+
+```
+
 > ## APIs construídas no treinamento
 
 1. [Cadastro]
@@ -67,12 +76,3 @@
 - Stubs
 - Spies
 - Fakes
-
-> ## EXECUCAO
-
-```
-docker-compose up
-
-```
-
-executar padrao
