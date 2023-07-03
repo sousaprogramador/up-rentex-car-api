@@ -6,7 +6,7 @@ import {
   DataType,
 } from 'sequelize-typescript';
 import { SequelizeModelFactory } from './sequelize-model-factory';
-import chance from 'chance';
+import * as chance from 'chance';
 import { validate as uuidValidate } from 'uuid';
 import { setupSequelize } from '../testing/helpers/db';
 
