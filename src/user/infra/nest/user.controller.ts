@@ -89,7 +89,6 @@ export class UsersController {
     @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
     @UploadedFile() file: Express.MulterS3.File,
   ) {
-    console.log('resquest', file.location);
     const output = await this.avatarUseCase.execute({
       id,
       avatar: file.location,
