@@ -11,15 +11,16 @@ docker-compose up
 
 ```
 
-[![alt text](./public/img/tests.png)]
+![alt text](./public/img/tests.png)
 
-> ## APIs construídas no treinamento
+> ## APIs
 
-1. [Cadastro]
-2. [Login - em desenvolvimento]
-3. [Categorias de carros - em desenvolvimento]
-4. [Carros - em desenvolvimento]
-5. [Alugueis - em desenvolvimento]
+1. [Usuarios - Concluido]
+1. [Upload Avatar AWS S3 - Concluido]
+1. [Login - em desenvolvimento]
+1. [Categorias de carros - em desenvolvimento]
+1. [Carros - em desenvolvimento]
+1. [Alugueis - em desenvolvimento]
 
 > ## Princípios
 
@@ -28,15 +29,12 @@ docker-compose up
 - Liskov Substitution Principle (LSP)
 - Interface Segregation Principle (ISP)
 - Dependency Inversion Principle (DIP)
-- Separation of Concerns (SOC)
-- Don't Repeat Yourself (DRY)
 
 > ## Metodologias e Designs
 
 - TDD
 - Clean Architecture
 - DDD
-- Conventional Commits
 - GitFlow
 - Modular Design
 - Dependency Diagrams
@@ -56,6 +54,7 @@ docker-compose up
 - MySQL
 - Sequelite
 - SuperTest
+- AWS
 
 > ## Features do Typescript
 

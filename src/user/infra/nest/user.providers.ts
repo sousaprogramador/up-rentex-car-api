@@ -5,6 +5,7 @@ import {
   ListUsersUseCase,
   GetUserUseCase,
   DeleteUserUseCase,
+  UpdateUserAvatarUseCase,
 } from '../../application/useCases';
 import UserRepository from '../../domain/repository/user.repository';
 import {
@@ -72,6 +73,14 @@ export namespace USER_PROVIDERS {
       provide: DeleteUserUseCase.UseCase,
       useFactory: (userRepo: UserRepository.Repository) => {
         return new DeleteUserUseCase.UseCase(userRepo);
+      },
+      inject: [REPOSITORIES.USER_REPOSITORY.provide],
+    };
+
+    export const UPDATE_USER_AVATAR_USE_CASE = {
+      provide: UpdateUserAvatarUseCase.UseCase,
+      useFactory: (userRepo: UserRepository.Repository) => {
+        return new UpdateUserAvatarUseCase.UseCase(userRepo);
       },
       inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };

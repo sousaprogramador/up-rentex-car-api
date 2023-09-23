@@ -2,7 +2,7 @@ import UserRepository from '../../domain/repository/user.repository';
 import { UserOutput, UserOutputMapper } from '../dto/user-output';
 import { default as DefaultUseCase } from '../../../@seedwork/application/use-cases';
 
-export namespace UpdateUserUseCase {
+export namespace UpdateUserAvatarUseCase {
   export class UseCase implements DefaultUseCase<Input, Output> {
     constructor(private userRepo: UserRepository.Repository) {}
 
@@ -22,4 +22,4 @@ export namespace UpdateUserUseCase {
   export type Output = UserOutput;
 }
 
-export default UpdateUserUseCase;
+export default UpdateUserAvatarUseCase;

@@ -10,13 +10,17 @@ import {
   Put,
   HttpCode,
   Delete,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import {
   CreateUserUseCase,
   UpdateUserUseCase,
   ListUsersUseCase,
   GetUserUseCase,
   DeleteUserUseCase,
+  UpdateUserAvatarUseCase,
 } from '../../application/useCases';
 import { CreateUserDto } from './dto/create-user.dto';
 import { SearchUserDto } from './dto/search-user.dto';
@@ -26,6 +30,7 @@ import {
   UserCollectionPresenter,
   UserPresenter,
 } from './presenter/user.presenter';
+import multerConfig from '../../../config/upload';
 @Controller('users')
 export class UsersController {
   @Inject(CreateUserUseCase.UseCase)
@@ -42,6 +47,9 @@ export class UsersController {
 
   @Inject(ListUsersUseCase.UseCase)
   private listUseCase: ListUsersUseCase.UseCase;
+
+  @Inject(UpdateUserAvatarUseCase.UseCase)
+  private avatarUseCase: UpdateUserAvatarUseCase.UseCase;
 
   @Get()
   async search(@Query() searchParams: SearchUserDto) {
@@ -63,7 +71,7 @@ export class UsersController {
     return UsersController.userToResponse(output);
   }
 
-  @Put(':id') //PUT vs PATCH
+  @Put(':id')
   async update(
     @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
     @Body() updateUserDto: UpdateUserDto,
@@ -71,6 +79,20 @@ export class UsersController {
     const output = await this.updateUseCase.execute({
       id,
       ...updateUserDto,
+    });
+    return UsersController.userToResponse(output);
+  }
+
+  @Put('avatar/:id')
+  @UseInterceptors(FileInterceptor('avatar', multerConfig))
+  async updateAvatar(
+    @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
+    @UploadedFile() file: Express.MulterS3.File,
+  ) {
+    console.log('resquest', file.location);
+    const output = await this.avatarUseCase.execute({
+      id,
+      avatar: file.location,
     });
     return UsersController.userToResponse(output);
   }
