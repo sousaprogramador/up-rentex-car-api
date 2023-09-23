@@ -46,7 +46,7 @@ export class CreateUserDto implements CreateUserUseCase.Input {
 
   @ApiProperty({
     type: 'string',
-    example: UsersConstants.IS_ACTIVE,
+    example: true,
   })
   @IsBoolean()
   @IsOptional()

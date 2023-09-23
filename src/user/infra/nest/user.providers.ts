@@ -12,6 +12,7 @@ import {
   UserModel,
   UserSequelizeRepository,
 } from '../db';
+import { Cryptography } from '../bcrypt';
 
 export namespace USER_PROVIDERS {
   export namespace REPOSITORIES {
@@ -38,7 +39,7 @@ export namespace USER_PROVIDERS {
     export const CREATE_USER_USE_CASE = {
       provide: CreateUserUseCase.UseCase,
       useFactory: (userRepo: UserRepository.Repository) => {
-        return new CreateUserUseCase.UseCase(userRepo);
+        return new CreateUserUseCase.UseCase(userRepo, new Cryptography());
       },
       inject: [REPOSITORIES.USER_REPOSITORY.provide],
     };

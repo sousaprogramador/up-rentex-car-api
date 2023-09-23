@@ -1,0 +1,14 @@
+const path = require('path');
+const fs = require('fs');
+
+const configPath = path.resolve('./src/database/database.js');
+const migrationsPath = path.resolve('./src/database/migration');
+const modelsPath = path.resolve(
+  'dist/src/**/**/infra/db/sequelize/*.model{.ts,.js}',
+);
+
+module.exports = {
+  config: configPath,
+  'migrations-path': migrationsPath,
+  'models-path': modelsPath,
+};
