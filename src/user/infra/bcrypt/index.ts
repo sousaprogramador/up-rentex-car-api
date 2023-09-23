@@ -6,7 +6,7 @@ export class Cryptography implements CryptographyInterface {
     return await hash(value, 8);
   }
 
-  compare(hashValue: string, value: string): Promise<boolean> {
+  async compare(hashValue: string, value: string): Promise<boolean> {
     return compare(hashValue, value);
   }
 }

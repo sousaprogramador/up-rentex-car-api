@@ -1,13 +1,16 @@
 import CreateUserUseCase from '../../create-user.use-case';
 import UserInMemoryRepository from '../../../../infra/db/in-memory/user-in-memory.repository';
+import { Cryptography } from '../../../../infra/bcrypt';
 
 describe('CreateUserUseCase Unit Tests', () => {
   let useCase: CreateUserUseCase.UseCase;
   let repository: UserInMemoryRepository;
+  let cryptography: Cryptography;
 
   beforeEach(() => {
     repository = new UserInMemoryRepository();
-    useCase = new CreateUserUseCase.UseCase(repository);
+    cryptography = new Cryptography();
+    useCase = new CreateUserUseCase.UseCase(repository, cryptography);
   });
 
   it('should create a user', async () => {
