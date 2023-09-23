@@ -1,13 +1,10 @@
 import { literal, Op } from 'sequelize';
 import { UserModel } from './user.model';
+import { UserModelMapper } from './user.model.mapper';
 import { UserRepository as UserRepositoryContract } from '../../../domain/repository/user.repository';
 import { User, UserId } from '../../../domain/entities';
 import { SortDirection } from '../../../../@seedwork/domain';
-import {
-  EntityValidationError,
-  LoadEntityError,
-  NotFoundError,
-} from '../../../../@seedwork/domain';
+import { NotFoundError } from '../../../../@seedwork/domain';
 
 export class UserSequelizeRepository
   implements UserRepositoryContract.Repository
@@ -101,20 +98,5 @@ export class UserSequelizeRepository
       return this.orderBy[dialect][sort](sort_dir);
     }
     return [[sort, sort_dir]];
-  }
-}
-
-export class UserModelMapper {
-  static toEntity(model: UserModel) {
-    const { id, ...otherData } = model.toJSON();
-    try {
-      return new User(otherData, new UserId(id));
-    } catch (e) {
-      if (e instanceof EntityValidationError) {
-        throw new LoadEntityError(e.error);
-      }
-
-      throw e;
-    }
   }
 }
