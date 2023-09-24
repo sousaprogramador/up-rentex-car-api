@@ -17,7 +17,7 @@ docker-compose up
 
 1. [Usuarios - Concluido]
 1. [Upload Avatar AWS S3 - Concluido]
-1. [Login - em desenvolvimento]
+1. [Login - Concluido]
 1. [Categorias de carros - em desenvolvimento]
 1. [Carros - em desenvolvimento]
 1. [Alugueis - em desenvolvimento]
@@ -55,6 +55,7 @@ docker-compose up
 - Sequelite
 - SuperTest
 - AWS
+- JWT
 
 > ## Features do Typescript
 
