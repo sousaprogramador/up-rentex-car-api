@@ -18,7 +18,8 @@ docker-compose up
 1. [Usuarios - Concluido]
 1. [Upload Avatar AWS S3 - Concluido]
 1. [Login - Concluido]
-1. [Categorias de carros - em desenvolvimento]
+1. [Categorias de carros - Concluido]
+1. [Especificacoes - em desenvolvimento]
 1. [Carros - em desenvolvimento]
 1. [Alugueis - em desenvolvimento]
 
