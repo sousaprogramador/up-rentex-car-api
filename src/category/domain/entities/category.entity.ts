@@ -1,6 +1,8 @@
 import UniqueEntityId from '../../../@seedwork/domain/value-objects/unique-entity-id.vo';
 import AggregateRoot from '../../../@seedwork/domain/entity/aggregate-root';
 import { EntityValidationError } from '../../../@seedwork/domain';
+import { CategoryFakeBuilder } from './category-fake-builder';
+import { CategoryValidatorFactory } from '../validators';
 
 export type CategoryProperties = {
   name: string;
@@ -35,7 +37,7 @@ export class Category extends AggregateRoot<
   }
 
   static validate(props: CategoryProperties) {
-    const validator = null;
+    const validator = CategoryValidatorFactory.create();
     const isValid = validator.validate(props);
     if (!isValid) {
       throw new EntityValidationError(validator.errors);
@@ -63,7 +65,7 @@ export class Category extends AggregateRoot<
   }
 
   static fake() {
-    return null;
+    return CategoryFakeBuilder;
   }
 
   toJSON(): Required<{ id: string } & CategoryProperties> {

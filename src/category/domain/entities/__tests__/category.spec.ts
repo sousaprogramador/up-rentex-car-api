@@ -11,7 +11,7 @@ describe('Category Unit Tests', () => {
     //expect(user.validate).toHaveBeenCalled();
     expect(props).toStrictEqual({
       name: 'Some testing',
-      email: 'test a description',
+      description: 'test a description',
     });
     expect(category.props.created_at).toBeInstanceOf(Date);
   });
