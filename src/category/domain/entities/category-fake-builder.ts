@@ -14,8 +14,7 @@ export class CategoryFakeBuilder<TBuild = any> {
 
   private _entity_id = undefined;
   private _name: PropOrFactory<string> = (_index) => this.chance.word();
-  private _description: PropOrFactory<string> = (_index) =>
-    this.chance.paragraph();
+  private _description: PropOrFactory<string> = (_index) => this.chance.word();
 
   private _created_at = undefined;
 
@@ -75,7 +74,7 @@ export class CategoryFakeBuilder<TBuild = any> {
   }
 
   build(): TBuild {
-    const users = new Array(this.countObjs).fill(undefined).map(
+    const categories = new Array(this.countObjs).fill(undefined).map(
       (_, index) =>
         new Category(
           {
@@ -90,7 +89,7 @@ export class CategoryFakeBuilder<TBuild = any> {
             : this.callFactory(this._entity_id, index),
         ),
     );
-    return this.countObjs === 1 ? (users[0] as any) : users;
+    return this.countObjs === 1 ? (categories[0] as any) : categories;
   }
 
   private getValue(prop) {
