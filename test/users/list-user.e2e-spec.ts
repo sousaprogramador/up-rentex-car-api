@@ -1,9 +1,9 @@
 import * as request from 'supertest';
+import { instanceToPlain } from 'class-transformer';
 import UserRepository from '../../src/user/domain/repository/user.repository';
 import { USER_PROVIDERS } from '../../src/user/infra/nest/user.providers';
 import { startApp } from '../../src/@seedwork/infra/nest/testing/helpers';
 import { ListUsersFixture } from '../../src/user/infra/nest/fixtures';
-import { instanceToPlain } from 'class-transformer';
 import { UsersController } from '../../src/user/infra/nest/user.controller';
 
 describe('UsersController (e2e)', () => {

@@ -1,6 +1,7 @@
 import { Transform } from 'class-transformer';
 import { UserOutput, ListUsersUseCase } from '../../../application';
 import { CollectionPresenter } from '../../../../@seedwork/infra/nest/presenters/collection.presenter';
+
 export class UserPresenter {
   id: string;
   name: string;
