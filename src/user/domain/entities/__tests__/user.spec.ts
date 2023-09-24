@@ -1,5 +1,6 @@
 import { User } from '../user';
 import { omit } from 'lodash';
+
 describe('User Unit Tests', () => {
   test('constructor of User', () => {
     const user = new User({

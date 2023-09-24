@@ -5,6 +5,7 @@ import { CreateUserFixture } from '../../src/user/infra/nest/fixtures';
 import { UsersController } from '../../src/user/infra/nest/user.controller';
 import { instanceToPlain } from 'class-transformer';
 import { startApp } from '../../src/@seedwork/infra/nest/testing/helpers';
+
 describe('UsersController (e2e)', () => {
   describe('/users (POST)', () => {
     describe('should a response error with 422 when request body is invalid', () => {

@@ -1,4 +1,4 @@
-import { hash } from 'bcrypt';
+import { hash } from 'bcryptjs';
 import { CryptographyInterface } from '../../domain/cryptography';
 
 export class Cryptography implements CryptographyInterface {

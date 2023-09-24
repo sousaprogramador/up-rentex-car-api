@@ -1,4 +1,4 @@
-import { compare } from 'bcrypt';
+import { compare } from 'bcryptjs';
 import { CryptographyInterface } from '../../domain/cryptography';
 
 export class Cryptography implements CryptographyInterface {
