@@ -19,6 +19,14 @@ export class CategoryFakeBuilder<TBuild = any> {
 
   private _created_at = undefined;
 
+  static aCategory() {
+    return new CategoryFakeBuilder<Category>();
+  }
+
+  static theCategories(countObjs: number) {
+    return new CategoryFakeBuilder<Category[]>(countObjs);
+  }
+
   withEntityId(valueOrFactory: PropOrFactory<CategoryId>) {
     this._entity_id = valueOrFactory;
     return this;
@@ -46,6 +54,11 @@ export class CategoryFakeBuilder<TBuild = any> {
 
   withDescription(valueOrFactory: PropOrFactory<string>) {
     this._description = valueOrFactory;
+    return this;
+  }
+
+  withCreatedAt(valueOrFactory: PropOrFactory<Date>) {
+    this._created_at = valueOrFactory;
     return this;
   }
 
