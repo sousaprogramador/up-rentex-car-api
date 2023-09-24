@@ -32,8 +32,8 @@ export class Category extends AggregateRoot<
 
   update(data: CategoryProperties): void {
     Category.validate(data);
-    this.name = data.name;
-    this.description = data.description;
+    this.name = data.name ?? this.name;
+    this.description = data.description ?? this.description;
   }
 
   static validate(props: CategoryProperties) {
