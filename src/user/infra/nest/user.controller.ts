@@ -30,7 +30,7 @@ import {
   UserCollectionPresenter,
   UserPresenter,
 } from './presenter/user.presenter';
-import multerConfig from '../../../config/upload';
+import multerConfig from '../../../@seedwork/infra/config/upload';
 @Controller('users')
 export class UsersController {
   @Inject(CreateUserUseCase.UseCase)

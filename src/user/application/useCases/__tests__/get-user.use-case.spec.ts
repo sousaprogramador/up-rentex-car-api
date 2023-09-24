@@ -1,7 +1,7 @@
-import GetUserUseCase from '../../get-user.use-case';
-import UserInMemoryRepository from '../../../../infra/db/in-memory/user-in-memory.repository';
-import { NotFoundError } from '../../../../../@seedwork/domain';
-import { User } from '../../../../domain/entities';
+import GetUserUseCase from '../get-user.use-case';
+import UserInMemoryRepository from '../../../infra/db/in-memory/user-in-memory.repository';
+import { NotFoundError } from '../../../../@seedwork/domain';
+import { User } from '../../../domain/entities';
 
 describe('GetUserUseCase Unit Tests', () => {
   let useCase: GetUserUseCase.UseCase;

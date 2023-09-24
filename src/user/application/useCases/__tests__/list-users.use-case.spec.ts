@@ -1,7 +1,7 @@
-import ListUsersUseCase from '../../list-users.use-case';
-import UserInMemoryRepository from '../../../../infra/db/in-memory/user-in-memory.repository';
-import { User } from '../../../../domain/entities';
-import UserRepository from '../../../../domain/repository/user.repository';
+import ListUsersUseCase from '../list-users.use-case';
+import UserInMemoryRepository from '../../../infra/db/in-memory/user-in-memory.repository';
+import { User } from '../../../domain/entities';
+import UserRepository from '../../../domain/repository/user.repository';
 
 describe('ListUsersUseCase Unit Tests', () => {
   let useCase: ListUsersUseCase.UseCase;

@@ -1,5 +1,5 @@
 import { UserModel } from '../user.model';
-import { UserModelMapper } from '../user.repository';
+import { UserModelMapper } from '../user.model.mapper';
 import { LoadEntityError } from '../../../../../@seedwork/domain';
 import { User, UserId } from '../../../../domain/entities';
 import { setupSequelize } from '../../../../../@seedwork/infra';

@@ -1,6 +1,6 @@
 import { User } from '../../domain/entities';
 import UserRepository from '../../domain/repository/user.repository';
-import { Cryptography } from 'src/user/infra/bcrypt';
+import { CryptographyInterface } from '../../domain/cryptography';
 import { UserOutput, UserOutputMapper } from '../dto/user-output';
 import { default as DefaultUseCase } from '../../../@seedwork/application/use-cases';
 
@@ -8,7 +8,7 @@ export namespace CreateUserUseCase {
   export class UseCase implements DefaultUseCase<Input, Output> {
     constructor(
       private userRepo: UserRepository.Repository,
-      private cryptography: Cryptography,
+      private cryptography: CryptographyInterface,
     ) {}
 
     async execute(input: Input): Promise<Output> {

@@ -1,7 +1,7 @@
-import DeleteUserUseCase from '../../delete-user.use-case';
-import UserInMemoryRepository from '../../../../infra/db/in-memory/user-in-memory.repository';
-import NotFoundError from '../../../../../@seedwork/domain/errors/not-found.error';
-import { User } from '../../../../domain/entities';
+import DeleteUserUseCase from '../delete-user.use-case';
+import UserInMemoryRepository from '../../../infra/db/in-memory/user-in-memory.repository';
+import NotFoundError from '../../../../@seedwork/domain/errors/not-found.error';
+import { User } from '../../../domain/entities';
 
 describe('DeleteUserUseCase Unit Tests', () => {
   let useCase: DeleteUserUseCase.UseCase;
