@@ -1,7 +1,7 @@
 import { IsBoolean, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { UsersConstants } from '../user.constaints';
-import { CreateUserUseCase } from '../../../application/useCases';
+import { CreateUserUseCase } from '../../../application/use-cases';
 
 export class CreateUserDto implements CreateUserUseCase.Input {
   @ApiProperty({

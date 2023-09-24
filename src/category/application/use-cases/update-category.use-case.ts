@@ -2,7 +2,7 @@ import CategoryRepository from '../../domain/repository/category.repository';
 import { CategoryOutput, CategoryOutputMapper } from '../dto/category-output';
 import { default as DefaultUseCase } from '../../../@seedwork/application/use-cases';
 
-export namespace UpdateUserUseCase {
+export namespace UpdateCategoryUseCase {
   export class UseCase implements DefaultUseCase<Input, Output> {
     constructor(private userRepo: CategoryRepository.Repository) {}
 
@@ -23,4 +23,4 @@ export namespace UpdateUserUseCase {
   export type Output = CategoryOutput;
 }
 
-export default UpdateUserUseCase;
+export default UpdateCategoryUseCase;

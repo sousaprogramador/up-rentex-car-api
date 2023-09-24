@@ -21,7 +21,7 @@ import {
   GetUserUseCase,
   DeleteUserUseCase,
   UpdateUserAvatarUseCase,
-} from '../../application/useCases';
+} from '../../application/use-cases';
 import { CreateUserDto } from './dto/create-user.dto';
 import { SearchUserDto } from './dto/search-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';

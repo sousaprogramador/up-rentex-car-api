@@ -6,7 +6,7 @@ import {
   GetUserUseCase,
   DeleteUserUseCase,
   UpdateUserAvatarUseCase,
-} from '../../application/useCases';
+} from '../../application/use-cases';
 import UserRepository from '../../domain/repository/user.repository';
 import {
   UserInMemoryRepository,

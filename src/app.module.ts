@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './user/infra/nest/user.module';
 import { AuthModule } from './auth/infra/nest/auth.module';
+import { CategoriesModule } from './category/infra';
 import { seedworkModule } from './@seedwork/infra/nest/@seedwork.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from './config/config.module';
@@ -13,6 +14,7 @@ import { ConfigModule } from './config/config.module';
     AuthModule,
     seedworkModule,
     DatabaseModule,
+    CategoriesModule,
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],
