@@ -3,8 +3,7 @@ import { UserModel } from './user.model';
 import { UserModelMapper } from './user.model.mapper';
 import { UserRepository as UserRepositoryContract } from '../../../domain/repository/user.repository';
 import { User, UserId } from '../../../domain/entities';
-import { SortDirection } from '../../../../@seedwork/domain';
-import { NotFoundError } from '../../../../@seedwork/domain';
+import { SortDirection, NotFoundError } from '../../../../@seedwork/domain';
 
 export class UserSequelizeRepository
   implements UserRepositoryContract.Repository
