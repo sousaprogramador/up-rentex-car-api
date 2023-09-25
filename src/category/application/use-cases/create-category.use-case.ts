@@ -5,11 +5,11 @@ import { default as DefaultUseCase } from '../../../@seedwork/application/use-ca
 
 export namespace CreateCategoryUseCase {
   export class UseCase implements DefaultUseCase<Input, Output> {
-    constructor(private userRepo: CategoryRepository.Repository) {}
+    constructor(private categoryRepo: CategoryRepository.Repository) {}
 
     async execute(input: Input): Promise<Output> {
       const entity = new Category(input);
-      await this.userRepo.insert(entity);
+      await this.categoryRepo.insert(entity);
       return CategoryOutputMapper.toOutput(entity);
     }
   }

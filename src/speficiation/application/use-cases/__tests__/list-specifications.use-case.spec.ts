@@ -1,19 +1,19 @@
-import ListCategoriesUseCase from '../list-categories.use-case';
-import { Category } from '../../../domain/entities';
-import CategoryInMemoryRepository from '../../../infra/db/in-memory/category-in-memory.repository';
-import CategoryRepository from '../../../domain/repository/category.repository';
+import ListSpecificationsUseCase from '../list-specifications.use-case';
+import { Specification } from '../../../domain/entities';
+import SpecificationInMemoryRepository from '../../../infra/db/in-memory/specification-in-memory.repository';
+import SpecificationRepository from '../../../domain/repository/specification.repository';
 
-describe('ListCategoriesUseCase Unit Tests', () => {
-  let useCase: ListCategoriesUseCase.UseCase;
-  let repository: CategoryInMemoryRepository;
+describe('ListSpecificationsUseCase Unit Tests', () => {
+  let useCase: ListSpecificationsUseCase.UseCase;
+  let repository: SpecificationInMemoryRepository;
 
   beforeEach(() => {
-    repository = new CategoryInMemoryRepository();
-    useCase = new ListCategoriesUseCase.UseCase(repository);
+    repository = new SpecificationInMemoryRepository();
+    useCase = new ListSpecificationsUseCase.UseCase(repository);
   });
 
   test('toOutput method', () => {
-    let result = new CategoryRepository.SearchResult({
+    let result = new SpecificationRepository.SearchResult({
       items: [],
       total: 1,
       current_page: 1,
@@ -31,12 +31,12 @@ describe('ListCategoriesUseCase Unit Tests', () => {
       last_page: 1,
     });
 
-    const entity = new Category({
+    const entity = new Specification({
       name: 'some test',
       description: 'some description',
     });
 
-    result = new CategoryRepository.SearchResult({
+    result = new SpecificationRepository.SearchResult({
       items: [entity],
       total: 1,
       current_page: 1,
@@ -58,11 +58,11 @@ describe('ListCategoriesUseCase Unit Tests', () => {
 
   it('should return output sorted by created_at when input param is empty', async () => {
     const items = [
-      new Category({
+      new Specification({
         name: 'some test',
         description: 'some description',
       }),
-      new Category({
+      new Specification({
         name: 'some test 2',
         description: 'some description 2',
         created_at: new Date(new Date().getTime() + 100),
