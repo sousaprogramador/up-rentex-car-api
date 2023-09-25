@@ -1,18 +1,18 @@
-import { CategoryModel } from '../category.model';
-import { CategoryModelMapper } from '../category.model.mapper';
+import { SpecificationModel } from '../specification.model';
+import { SpecificationModelMapper } from '../specification.model.mapper';
 import { LoadEntityError } from '../../../../../@seedwork/domain';
-import { Category, CategoryId } from '../../../../domain/entities';
+import { Specification, SpecificationId } from '../../../../domain/entities';
 import { setupSequelize } from '../../../../../@seedwork/infra';
 
-describe('CategoryModelMapper Unit Tests', () => {
-  setupSequelize({ models: [CategoryModel] });
+describe('SpecificationModelMapper Unit Tests', () => {
+  setupSequelize({ models: [SpecificationModel] });
 
   it('should throws error when cast member is invalid', () => {
-    const model = CategoryModel.build({
+    const model = SpecificationModel.build({
       id: '9366b7dc-2d71-4799-b91c-c64adb205104',
     });
     try {
-      CategoryModelMapper.toEntity(model);
+      SpecificationModelMapper.toEntity(model);
       fail('The user is valid, but it needs throws a LoadEntityError');
     } catch (e) {
       expect(e).toBeInstanceOf(LoadEntityError);
@@ -33,35 +33,35 @@ describe('CategoryModelMapper Unit Tests', () => {
   it('should throw a generic error', () => {
     const error = new Error('Generic Error');
     const spyValidate = jest
-      .spyOn(Category, 'validate')
+      .spyOn(Specification, 'validate')
       .mockImplementation(() => {
         throw error;
       });
-    const model = CategoryModel.build({
+    const model = SpecificationModel.build({
       id: '9366b7dc-2d71-4799-b91c-c64adb205104',
     });
-    expect(() => CategoryModelMapper.toEntity(model)).toThrow(error);
+    expect(() => SpecificationModelMapper.toEntity(model)).toThrow(error);
     expect(spyValidate).toHaveBeenCalled();
     spyValidate.mockRestore();
   });
 
-  it('should convert a category model to a category entity', () => {
+  it('should convert a Specification model to a Specification entity', () => {
     const created_at = new Date();
-    const model = CategoryModel.build({
+    const model = SpecificationModel.build({
       id: '5490020a-e866-4229-9adc-aa44b83234c4',
       name: 'Some testing',
       description: 'some a description',
       created_at,
     });
-    const entity = CategoryModelMapper.toEntity(model);
+    const entity = SpecificationModelMapper.toEntity(model);
     expect(entity.toJSON()).toEqual(
-      new Category(
+      new Specification(
         {
           name: 'Some testing',
           description: 'some a description',
           created_at,
         },
-        new CategoryId('5490020a-e866-4229-9adc-aa44b83234c4'),
+        new SpecificationId('5490020a-e866-4229-9adc-aa44b83234c4'),
       ).toJSON(),
     );
   });

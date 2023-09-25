@@ -1,6 +1,6 @@
 import { literal, Op } from 'sequelize';
 import { CategoryModel } from './category.model';
-import { CategoryModelMapper } from './cateogry.model.mapper';
+import { CategoryModelMapper } from './category.model.mapper';
 import { CategoryRepository as CategoryRepositoryContract } from '../../../domain/repository';
 import { Category, CategoryId } from '../../../domain/entities';
 import { SortDirection, NotFoundError } from '../../../../@seedwork/domain';

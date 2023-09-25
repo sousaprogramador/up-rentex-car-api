@@ -2,7 +2,7 @@ import { MigrationFn } from 'umzug';
 import { Sequelize, DataTypes } from 'sequelize';
 
 export const up: MigrationFn<Sequelize> = async ({ context: sequelize }) => {
-  await sequelize.getQueryInterface().createTable('categories', {
+  await sequelize.getQueryInterface().createTable('specifications', {
     id: {
       type: DataTypes.UUID,
       allowNull: false,
@@ -23,5 +23,5 @@ export const up: MigrationFn<Sequelize> = async ({ context: sequelize }) => {
   });
 };
 export const down: MigrationFn<Sequelize> = async ({ context: sequelize }) => {
-  await sequelize.getQueryInterface().dropTable('categories');
+  await sequelize.getQueryInterface().dropTable('specifications');
 };
