@@ -1,4 +1,4 @@
-import { Category } from '../category.entity';
+import { Category } from '../category';
 import { omit } from 'lodash';
 
 describe('Category Unit Tests', () => {

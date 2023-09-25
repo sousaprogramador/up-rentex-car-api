@@ -1,9 +1,9 @@
-import { Category, CategoryId } from './category';
+import { Specification, SpecificationId } from './specificiation';
 import { Chance } from 'chance';
 
 type PropOrFactory<T> = T | ((index: number) => T);
 
-export class CategoryFakeBuilder<TBuild = any> {
+export class SpecificationFakeBuilder<TBuild = any> {
   private chance: Chance.Chance;
   private countObjs: number;
 
@@ -18,15 +18,15 @@ export class CategoryFakeBuilder<TBuild = any> {
 
   private _created_at = undefined;
 
-  static aCategory() {
-    return new CategoryFakeBuilder<Category>();
+  static aSpecification() {
+    return new SpecificationFakeBuilder<Specification>();
   }
 
-  static theCategories(countObjs: number) {
-    return new CategoryFakeBuilder<Category[]>(countObjs);
+  static theSpecifications(countObjs: number) {
+    return new SpecificationFakeBuilder<Specification[]>(countObjs);
   }
 
-  withEntityId(valueOrFactory: PropOrFactory<CategoryId>) {
+  withEntityId(valueOrFactory: PropOrFactory<SpecificationId>) {
     this._entity_id = valueOrFactory;
     return this;
   }
@@ -74,9 +74,9 @@ export class CategoryFakeBuilder<TBuild = any> {
   }
 
   build(): TBuild {
-    const categories = new Array(this.countObjs).fill(undefined).map(
+    const specifications = new Array(this.countObjs).fill(undefined).map(
       (_, index) =>
-        new Category(
+        new Specification(
           {
             name: this.callFactory(this._name, index),
             description: this.callFactory(this._description, index),
@@ -89,7 +89,7 @@ export class CategoryFakeBuilder<TBuild = any> {
             : this.callFactory(this._entity_id, index),
         ),
     );
-    return this.countObjs === 1 ? (categories[0] as any) : categories;
+    return this.countObjs === 1 ? (specifications[0] as any) : specifications;
   }
 
   private getValue(prop) {
