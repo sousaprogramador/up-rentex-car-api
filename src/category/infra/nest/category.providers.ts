@@ -15,7 +15,7 @@ import {
 
 export namespace CATEGORY_PROVIDERS {
   export namespace REPOSITORIES {
-    export const USER_IN_MEMORY_REPOSITORY = {
+    export const CATEGORY_IN_MEMORY_REPOSITORY = {
       provide: 'CategoryInMemoryRepository',
       useClass: CategoryInMemoryRepository,
     };
