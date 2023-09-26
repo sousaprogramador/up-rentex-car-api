@@ -1,11 +1,13 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { CreateCategoryUseCase } from '../../../application/use-cases';
+import { CreateSpecificationUseCase } from '../../../application/use-cases';
 
-export class CreateCategoryDto implements CreateCategoryUseCase.Input {
+export class CreateSpecificationDto
+  implements CreateSpecificationUseCase.Input
+{
   @ApiProperty({
     type: 'string',
-    example: 'name category',
+    example: 'name specification',
   })
   @IsString()
   @IsNotEmpty()
@@ -13,7 +15,7 @@ export class CreateCategoryDto implements CreateCategoryUseCase.Input {
 
   @ApiProperty({
     type: 'string',
-    example: 'description category',
+    example: 'description specification',
   })
   @IsString()
   @IsNotEmpty()
