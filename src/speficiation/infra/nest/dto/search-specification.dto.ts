@@ -2,7 +2,7 @@ import { Transform } from 'class-transformer';
 import { ListSpecificationsUseCase } from '../../../application';
 import { SortDirection } from '../../../../@seedwork/domain';
 
-export class SearchCategoryDto implements ListSpecificationsUseCase.Input {
+export class SearchSpecificationDto implements ListSpecificationsUseCase.Input {
   page?: number;
   per_page?: number;
   sort?: string;

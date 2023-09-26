@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DatabaseModule } from './database/database.module';
+import { ConfigModule } from './config/config.module';
+import { seedworkModule } from './@seedwork/infra/nest/@seedwork.module';
 import { UsersModule } from './user/infra/nest/user.module';
 import { AuthModule } from './auth/infra/nest/auth.module';
 import { CategoriesModule } from './category/infra';
-import { seedworkModule } from './@seedwork/infra/nest/@seedwork.module';
-import { DatabaseModule } from './database/database.module';
-import { ConfigModule } from './config/config.module';
+import { SpecificationsModule } from './speficiation/infra';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ConfigModule } from './config/config.module';
     seedworkModule,
     DatabaseModule,
     CategoriesModule,
+    SpecificationsModule,
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],

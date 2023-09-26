@@ -4,8 +4,9 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { CONFIG_SCHEMA_TYPE } from '../config/config.module';
 import { UserModel } from '../user/infra/db';
 import { CategoryModel } from '../category/infra';
+import { SpecificationModel } from 'src/speficiation/infra';
 
-const models = [UserModel, CategoryModel];
+const models = [UserModel, CategoryModel, SpecificationModel];
 @Module({
   imports: [
     SequelizeModule.forRootAsync({
