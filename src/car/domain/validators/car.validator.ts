@@ -6,6 +6,7 @@ import {
   IsOptional,
   IsNumber,
   IsBoolean,
+  IsArray,
 } from 'class-validator';
 import ClassValidatorFields from '../../../@seedwork/domain/validators/class-validator-fields';
 import { CarProperties } from '../entities/car';
@@ -32,13 +33,13 @@ export class CarRules {
   @IsNumber()
   fineAmount: number;
 
-  @IsBoolean()
+  @IsString()
   brand: string;
 
-  @IsBoolean()
+  @IsString()
   categorId: string;
 
-  @IsString()
+  @IsArray()
   specifications: string[];
 
   @IsDate()
