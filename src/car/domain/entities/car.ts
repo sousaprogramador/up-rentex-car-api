@@ -127,6 +127,18 @@ export class Car extends AggregateRoot<CarId, CarProperties, CarPropsJson> {
   }
 
   toJSON(): Required<{ id: string } & CarProperties> {
-    throw new Error('Method not implemented.');
+    return {
+      id: this.id.toString(),
+      name: this.props.name,
+      description: this.props.description,
+      dailyRate: this.props.dailyRate,
+      available: this.props.available,
+      licensePlate: this.props.licensePlate,
+      fineAmount: this.props.fineAmount,
+      brand: this.props.brand,
+      categorId: this.props.categorId,
+      specifications: this.props.specifications,
+      created_at: this.created_at,
+    };
   }
 }
